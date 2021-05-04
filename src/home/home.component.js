@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { goToTeamsPageAction } from "../teams/team.actions"
+import { goToTeamsPageAction } from "../teams/teams.actions"
 
 export const HomeComponent = () => {
 	const dispatch = useDispatch()

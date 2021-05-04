@@ -4,7 +4,7 @@ import { push } from "connected-react-router"
 export const fetchTeamRosterAction = teamName => ({
 	type: TEAMS_FETCH,
 	payload: { teamName },
-	meta: { expand: "team.roster" }
+	meta: { expand: "team.roster,team.schedule.next" }
 })
 
 export const goToTeamRosterPageAction = teamName => push(`/teams/${ teamName }/roster`)

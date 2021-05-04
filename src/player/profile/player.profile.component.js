@@ -1,4 +1,7 @@
-import React, { useEffect } from "react"
+import React, {
+	useEffect,
+	Fragment,
+} from "react"
 import {
 	useDispatch,
 	useSelector,
@@ -12,39 +15,76 @@ export const PlayerProfileComponent = () => {
 	const { id } = useParams() //wish i could use player.fullName
 	const player = useSelector(playerSelector)
 
-	//go to stats page
-	// const onClick = () => dispatch(goToTeamRosterPageAction(teamName))
-
 	useEffect(
 		() => {
 			dispatch(fetchPlayerProfileAction(id))
 		},
-		[]
+		[ player ]
 	)
-	//todo handle loading
-	// return useMemo(() => (
-	// 		team ? (
-	// 			<Fragment>
-	// 				<div>TODO</div>
-	// 				<ul>
-	// 					<li>
-	// 						<img
-	// 							style={ { height: "25px", width: "25px" } }
-	// 							//todo make relative?
-	// 							src={ `http://www-league.nhlstatic.com/nhl.com/builds/site-core/d1b262bacd4892b22a38e8708cdb10c8327ff73e_1579810224/images/logos/team/current/team-${ team.id }-light.svg` }
-	// 							alt={ "Logo" }
-	// 						/>
-	// 						{ team.name }
-	// 					</li>
-	// 					<li>Conference: { team.conference.name }</li>
-	// 					<li>Division: { team.division.name }</li>
-	// 					<li onClick={ onClick }>View Roster</li>
-	// 				</ul>
-	// 			</Fragment>
-	// 		) : null
-	// 	),
-	// 	[ team?.id ]
-	// )
 
-	return <pre>{ JSON.stringify(player, undefined, 2) }</pre>
+	return (
+		player ? (
+			<Fragment>
+				<ul>
+					<li>
+						<img
+							style={ { height: "25px", width: "25px" } }
+							//todo make relative?
+							src={ `https://nhl.bamcontent.com/images/headshots/current/168X168/${ player.id }.jpg` }
+							alt={ "Logo" }
+						/>
+						{ player.fullName }
+					</li>
+					<li> Team: { player.currentTeam?.name }</li>
+					<li> Age: { player.currentAge }</li>
+					<li> Jersey :{ player.primaryNumber }</li>
+					<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>
+					<li> Handed: { player.shootsCatches }</li>
+					<li> Nationality: { player.nationality }</li>
+					{ player.captain && <li>Captain</li> }
+					{ player.rookie && <li>Rookie</li> }
+				</ul>
+			</Fragment>
+		) : null
+	)
+// return
 }
+
+
+/*
+
+
+{
+  "id": 8477972,
+  "fullName": "Josh Jacobs",
+  "link": "/api/v1/people/8477972",
+  "firstName": "Josh",
+  "lastName": "Jacobs",
+  "primaryNumber": "40",
+  "birthDate": "1996-02-15",
+  "currentAge": 25,
+  "birthCity": "Shelby Township",
+  "birthStateProvince": "MI",
+  "birthCountry": "USA",
+  "nationality": "USA",
+  "height": "6' 2\"",
+  "weight": 200,
+  "active": true,
+  "alternateCaptain": false,
+  "captain": false,
+  "rookie": true,
+  "shootsCatches": "R",
+  "rosterStatus": "Y",
+  "currentTeam": {
+    "id": 1,
+    "name": "New Jersey Devils",
+    "link": "/api/v1/teams/1"
+  },
+  "primaryPosition": {
+    "code": "D",
+    "name": "Defenseman",
+    "type": "Defenseman",
+    "abbreviation": "D"
+  }
+}
+ */

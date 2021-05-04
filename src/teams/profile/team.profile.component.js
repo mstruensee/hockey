@@ -31,7 +31,6 @@ export const TeamProfileComponent = () => {
 	return useMemo(() => (
 			team ? (
 				<Fragment>
-					<div>TODO</div>
 					<ul>
 						<li>
 							<img

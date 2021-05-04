@@ -1,0 +1,9 @@
+section.teams-section {
+  background-color: #eeeeee;
+
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+  justify-content: center;
+}

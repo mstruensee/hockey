@@ -16,6 +16,7 @@ export const TeamRosterComponent = () => {
 	const dispatch = useDispatch()
 	const { teamName } = useParams()
 
+
 	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
 
 	const onClick = id => dispatch(goToPlayerProfilePageAction(id))

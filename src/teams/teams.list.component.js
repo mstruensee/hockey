@@ -4,33 +4,36 @@ import {
 	useSelector,
 } from "react-redux"
 import { fetchTeamsAction } from "./teams.actions"
-import { TeamsItemComponent } from "./teams.item.component"
-import { teamsSelector } from "./teams.selectors"
+import { TeamsCardComponent } from "./teams.card.component"
+import {
+	teamsBySearchTermSelector,
+} from "./teams.selectors"
+import "./teams.list.scss"
 
 export const TeamsListComponent = () => {
 	//todo handle when use navigates backwards (it loads 1 team, then fetches all, then display's all)
 	//do not do teams === 1
 
-	const teams = useSelector(teamsSelector)
+	const teams = useSelector(teamsBySearchTermSelector)
 	const dispatch = useDispatch()
 
 	useEffect(
 		() => {
 			dispatch(fetchTeamsAction())
 		},
-		[ teams ]
+		[]
 	)
 
 	return (
-		<ul>
+		<section className={ "teams-section" }>
 			{
 				teams.map(team => (
-					<TeamsItemComponent
+					<TeamsCardComponent
 						key={ team.id }
 						team={ team }
 					/>
 				))
 			}
-		</ul>
+		</section>
 	)
 }

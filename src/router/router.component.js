@@ -3,7 +3,6 @@ import {
 	Route,
 	Switch,
 } from "react-router"
-import { HomePage } from "../home/home.page"
 import { PlayerProfilePage } from "../player/profile/player.profile.page"
 import { TeamRosterPage } from "../roster/team.roster.page"
 import { TeamProfilePage } from "../teams/profile/team.profile.page"
@@ -14,11 +13,6 @@ export const RouterComponent = () => (
 		<Route
 			exact
 			path={ "/" }
-			component={ HomePage }
-		/>
-		<Route
-			exact
-			path={ "/teams" }
 			component={ TeamsPage }
 		/>
 		<Route

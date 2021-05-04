@@ -1,6 +1,10 @@
-import React from "react"
+import React, { Fragment } from "react"
+import { TeamRosterComponent } from "../../roster/team.roster.component"
 import { TeamProfileComponent } from "./team.profile.component"
 
 export const TeamProfilePage = () => (
-	<TeamProfileComponent />
+	<Fragment>
+		<TeamProfileComponent />
+		<TeamRosterComponent />
+	</Fragment>
 )
