@@ -19,7 +19,7 @@ export const PlayerProfileComponent = () => {
 		() => {
 			dispatch(fetchPlayerProfileAction(id))
 		},
-		[ player ]
+		[  ]
 	)
 
 	return (

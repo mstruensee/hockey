@@ -1,6 +1,5 @@
 import React, {
 	useEffect,
-	useMemo,
 	Fragment,
 } from "react"
 import {
@@ -11,11 +10,11 @@ import { useParams } from "react-router-dom"
 import { goToPlayerProfilePageAction } from "../player/profile/player.profile.actions"
 import { rosterByTeamNameSelector } from "../teams/teams.selectors"
 import { fetchTeamRosterAction } from "./team.roster.actions"
+import "./team.roster.scss"
 
 export const TeamRosterComponent = () => {
 	const dispatch = useDispatch()
 	const { teamName } = useParams()
-
 
 	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
 
@@ -27,27 +26,36 @@ export const TeamRosterComponent = () => {
 				dispatch(fetchTeamRosterAction(teamName))
 			}
 		},
-		[ roster ]
+		[]
 	)
 
-	return useMemo(() => (
-			roster ? (
-				<Fragment>
-					<ul>
+	return (
+		roster ? (
+			<Fragment>
+				<table className={ "roster-table" }>
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Position</th>
+						</tr>
+					</thead>
+					<tbody>
 						{
 							roster.map(player => (
-								<li
+								<tr
 									key={ player.person.id }
 									onClick={ () => onClick(player.person.id) }
 								>
-									{ player.person.fullName }
-								</li>
+									<td>{ player.jerseyNumber }</td>
+									<td>{ player.person.fullName }</td>
+									<td>{ player.position.name }</td>
+								</tr>
 							))
 						}
-					</ul>
-				</Fragment>
-			) : null
-		),
-		[ roster ]
+					</tbody>
+				</table>
+			</Fragment>
+		) : null
 	)
 }
