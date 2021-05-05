@@ -1,3 +1,2 @@
-export const TEAMS_SEARCH_REDUCER = "teamsSearchTerm"
-export const TEAMS_SEARCH = "@filter/teams/search"
-export const TEAMS_SEARCH_INITIAL_STATE = ""
+export const TEAMS_SEARCH_TERM_REDUCER = "teamsSearchTerm"
+export const TEAMS_SEARCH_TERM_INITIAL_STATE = ""

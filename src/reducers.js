@@ -9,8 +9,12 @@ import {
 	PLAYER_REDUCER
 } from "./player/profile/player.types"
 import {
-	TEAMS_SEARCH_INITIAL_STATE,
-	TEAMS_SEARCH_REDUCER
+	PLAYER_SEARCH_TERM_INITIAL_STATE,
+	PLAYER_SEARCH_TERM_REDUCER
+} from "./player/search/player.search.types"
+import {
+	TEAMS_SEARCH_TERM_INITIAL_STATE,
+	TEAMS_SEARCH_TERM_REDUCER
 } from "./teams/search/teams.search.types"
 import {
 	TEAMS_INITIAL_STATE,
@@ -29,8 +33,12 @@ export const reducers = combineReducers({
 		reducerName: PLAYER_REDUCER,
 		initialState: PLAYER_INITIAL_STATE
 	}),
-	[ TEAMS_SEARCH_REDUCER ]: stringReducer({
-		reducerName: TEAMS_SEARCH_REDUCER,
-		initialState: TEAMS_SEARCH_INITIAL_STATE
+	[ TEAMS_SEARCH_TERM_REDUCER ]: stringReducer({
+		reducerName: TEAMS_SEARCH_TERM_REDUCER,
+		initialState: TEAMS_SEARCH_TERM_INITIAL_STATE
+	}),
+	[ PLAYER_SEARCH_TERM_REDUCER ]: stringReducer({
+		reducerName: PLAYER_SEARCH_TERM_REDUCER,
+		initialState: PLAYER_SEARCH_TERM_INITIAL_STATE
 	}),
 })
