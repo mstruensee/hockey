@@ -1,0 +1,44 @@
+.player-profile {
+  font-size: 16px;
+
+  .profile-image {
+    text-align: center;
+
+    img {
+      border-radius: 50%;
+      max-width: 40%;
+    }
+  }
+
+  h3, h5 {
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 3px 0;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  h5 {
+    color: #888;
+    letter-spacing: 1px;
+  }
+}
+
+.player-profile .icons i {
+  color: #999;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 1.5em;
+}
+
+.player-profile .icons i:hover {
+  color: #555;
+}
+
+.player-profile .icons i a {
+  text-decoration: none;
+}

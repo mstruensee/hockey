@@ -24,6 +24,11 @@ export const teamByTeamNameSelector = createSelector(
 	)
 )
 
+export const teamAbbreviationByTeamNameSelector = createSelector(
+	[ teamByTeamNameSelector ],
+	({ abbreviation = "" }) => abbreviation
+)
+
 export const rosterByTeamNameSelector = createSelector(
 	[
 		teamByTeamNameSelector,

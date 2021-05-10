@@ -32,6 +32,10 @@
     tr:nth-of-type(even) {
       background-color: #f3f3f3;
     }
+    tr:hover {
+      border: black solid 2px;
+      cursor: pointer;
+    }
   }
 }
 

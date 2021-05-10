@@ -1,5 +1,6 @@
 import React, {
 	useEffect,
+	useState,
 	Fragment,
 } from "react"
 import {
@@ -7,18 +8,24 @@ import {
 	useSelector
 } from "react-redux"
 import { useParams } from "react-router-dom"
-import { goToPlayerProfilePageAction } from "../player/profile/player.profile.actions"
+import { ModalComponent } from "../player/modal/modal.component"
 import { rosterByTeamNameSelector } from "../teams/teams.selectors"
 import { fetchTeamRosterAction } from "./team.roster.actions"
 import "./team.roster.scss"
+
+const initialState = {
+	player: null,
+	isOpen: false
+}
 
 export const TeamRosterComponent = () => {
 	const dispatch = useDispatch()
 	const { teamName } = useParams()
 
-	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
+	const [ { isOpen = false, player }, setState ] = useState(initialState)
+	const closeModal = () => setState(initialState)
 
-	const onClick = id => dispatch(goToPlayerProfilePageAction(id))
+	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
 
 	useEffect(
 		() => {
@@ -32,6 +39,12 @@ export const TeamRosterComponent = () => {
 	return (
 		roster ? (
 			<Fragment>
+				{ isOpen && (
+					<ModalComponent
+						onCloseHandler={ closeModal }
+						player={ player }
+					/>
+				) }
 				<table className={ "roster-table" }>
 					<thead>
 						<tr>
@@ -45,7 +58,12 @@ export const TeamRosterComponent = () => {
 							roster.map(player => (
 								<tr
 									key={ player.person.id }
-									onClick={ () => onClick(player.person.id) }
+									onClick={
+										() => setState({
+											isOpen: true,
+											player
+										})
+									}
 								>
 									<td>{ player.jerseyNumber }</td>
 									<td>{ player.person.fullName }</td>

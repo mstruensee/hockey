@@ -7,43 +7,70 @@ import {
 	useSelector,
 } from "react-redux"
 import { useParams } from "react-router-dom"
+import { teamAbbreviationByTeamNameSelector } from "../../teams/teams.selectors"
 import { fetchPlayerProfileAction } from "./player.profile.actions"
 import { playerSelector } from "./player.profile.selectors"
+import "./player.profile.scss"
 
-export const PlayerProfileComponent = () => {
+export const PlayerProfileComponent = ({ id }) => {
 	const dispatch = useDispatch()
-	const { id } = useParams() //wish i could use player.fullName
+	const { teamName } = useParams() //wish i could use player.fullName
 	const player = useSelector(playerSelector)
+	const teamAbbreviation = useSelector(state => teamAbbreviationByTeamNameSelector(state, { teamName }))
 
 	useEffect(
 		() => {
 			dispatch(fetchPlayerProfileAction(id))
 		},
-		[  ]
+		[]
 	)
 
 	return (
 		player ? (
 			<Fragment>
-				<ul>
-					<li>
+				<div className="player-profile">
+					<div className="profile-image">
 						<img
-							style={ { height: "25px", width: "25px" } }
-							//todo make relative?
-							src={ `https://nhl.bamcontent.com/images/headshots/current/168X168/${ player.id }.jpg` }
-							alt={ "Logo" }
+							src={`https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png`}
+							alt="profile-sample2"
 						/>
-						{ player.fullName }
-					</li>
-					<li> Team: { player.currentTeam?.name }</li>
-					<li> Age: { player.currentAge }</li>
-					<li> Jersey :{ player.primaryNumber }</li>
-					<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>
-					<li> Handed: { player.shootsCatches }</li>
-					<li> Nationality: { player.nationality }</li>
-					{ player.captain && <li>Captain</li> }
-					{ player.rookie && <li>Rookie</li> }
-				</ul>
+					</div>
+					<div>
+						{ player.captain && <h5>Captain</h5> }
+						{ player.rookie && <h5>Rookie</h5> }
+						<p>
+							<ul>
+								<li> Team: { player.currentTeam?.name }</li>
+								<li> Age: { player.currentAge }</li>
+								<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>
+								<li> Handed: { player.shootsCatches }</li>
+								<li> Nationality: { player.nationality }</li>
+							</ul>
+
+						</p>
+					</div>
+				</div>
+
+
+				{/*<ul>*/}
+				{/*	<li>*/}
+				{/*		<img*/}
+				{/*			style={ { height: "25px", width: "25px" } }*/}
+				{/*			//todo make relative?*/}
+				{/*			src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }*/}
+				{/*			alt={ "Logo" }*/}
+				{/*		/>*/}
+				{/*		{ player.fullName }*/}
+				{/*	</li>*/}
+				{/*	<li> Team: { player.currentTeam?.name }</li>*/}
+				{/*	<li> Age: { player.currentAge }</li>*/}
+				{/*	<li> Jersey :{ player.primaryNumber }</li>*/}
+				{/*	<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>*/}
+				{/*	<li> Handed: { player.shootsCatches }</li>*/}
+				{/*	<li> Nationality: { player.nationality }</li>*/}
+				{/*	{ player.captain && <li>Captain</li> }*/}
+				{/*	{ player.rookie && <li>Rookie</li> }*/}
+				{/*</ul>*/}
 			</Fragment>
 		) : null
 	)
