@@ -27,14 +27,14 @@ export const TeamRosterComponent = () => {
 
 	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
 
-	useEffect(
-		() => {
-			if (!roster) {
-				dispatch(fetchTeamRosterAction(teamName))
-			}
-		},
-		[]
-	)
+	// useEffect(
+	// 	() => {
+	// 		if (!roster) {
+	// 			dispatch(fetchTeamRosterAction(teamName))
+	// 		}
+	// 	},
+	// 	[]
+	// )
 
 	return (
 		roster ? (
@@ -51,23 +51,28 @@ export const TeamRosterComponent = () => {
 							<th>#</th>
 							<th>Name</th>
 							<th>Position</th>
+							<th>Player Info</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody data-cy={ "team-roster" }>
 						{
 							roster.map(player => (
-								<tr
-									key={ player.person.id }
-									onClick={
-										() => setState({
-											isOpen: true,
-											player
-										})
-									}
-								>
+								<tr key={ player.person.id }>
 									<td>{ player.jerseyNumber }</td>
 									<td>{ player.person.fullName }</td>
 									<td>{ player.position.name }</td>
+									<td
+										onClick={
+											() => setState({
+												isOpen: true,
+												player
+											})
+										}
+										className={ "view-player-info" }
+										data-cy={ "view-player-info" }
+									>
+										View
+									</td>
 								</tr>
 							))
 						}

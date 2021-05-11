@@ -10,6 +10,7 @@ export const SearchComponent = ({ onChange, value }) => (
 				placeholder={ "Search" }
 				onChange={ onChange }
 				value={ value }
+				data-cy={ "search-input" }
 			/>
 		</div>
 	</Fragment>

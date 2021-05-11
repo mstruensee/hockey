@@ -11,9 +11,6 @@ import {
 import "./teams.list.scss"
 
 export const TeamsListComponent = () => {
-	//todo handle when use navigates backwards (it loads 1 team, then fetches all, then display's all)
-	//do not do teams === 1
-
 	const teams = useSelector(teamsBySearchTermSelector)
 	const dispatch = useDispatch()
 

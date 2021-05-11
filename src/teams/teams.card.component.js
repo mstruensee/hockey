@@ -15,7 +15,10 @@ export const TeamsCardComponent = ({ team }) => {
 
 	return useMemo(
 		() => (
-			<article className={ "team-card" }>
+			<article
+				className={ "team-card" }
+				data-cy={ name }
+			>
 				<span className={ "title" }> { name }</span>
 				<figure
 					className={ `thumbnail ${ abbreviation }` }
@@ -30,7 +33,8 @@ export const TeamsCardComponent = ({ team }) => {
 					<a
 						href={ officialSiteUrl }
 						target={ "_blank" }
-					>Official Website
+					>
+						Official Website
 					</a>
 				</main>
 			</article>

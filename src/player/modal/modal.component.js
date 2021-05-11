@@ -12,8 +12,12 @@ export const ModalComponent = ({ onCloseHandler, player }) => {
 				>
 					<div className={ "modal-content" }>
 						<header>
-							<h4>#{ player?.jerseyNumber } { player?.person?.fullName }</h4>
-							<span onClick={ onCloseHandler }>&times;</span>
+							<h4 data-cy={ "jersey and name" }>#{ player?.jerseyNumber } { player?.person?.fullName }</h4>
+							<span
+								onClick={ onCloseHandler }
+								data-cy={ "close player info" }
+							>&times;
+							</span>
 						</header>
 						<div className={ "modal-main" }>
 							<PlayerProfileComponent id={ player.person.id } />

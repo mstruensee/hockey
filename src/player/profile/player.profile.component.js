@@ -31,46 +31,43 @@ export const PlayerProfileComponent = ({ id }) => {
 				<div className="player-profile">
 					<div className="profile-image">
 						<img
-							src={`https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png`}
+							src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }
 							alt="profile-sample2"
 						/>
 					</div>
 					<div>
-						{ player.captain && <h5>Captain</h5> }
-						{ player.rookie && <h5>Rookie</h5> }
-						<p>
+						{ player.captain && <h5 data-cy={ "captain" }>Captain</h5> }
+						{ player.rookie && <h5 data-cy={ "rookie" }>Rookie</h5> }
+						<article>
 							<ul>
-								<li> Team: { player.currentTeam?.name }</li>
-								<li> Age: { player.currentAge }</li>
-								<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>
-								<li> Handed: { player.shootsCatches }</li>
-								<li> Nationality: { player.nationality }</li>
+								<li data-cy={ "team" }>Team: { player.currentTeam?.name }</li>
+								<li data-cy={ "age" }>Age: { player.currentAge }</li>
+								<li data-cy={ "position" }>Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>
+								<li data-cy={ "handed" }>Handed: { player.shootsCatches }</li>
+								<li data-cy={ "nationality" }>Nationality: { player.nationality }</li>
 							</ul>
-
-						</p>
+						</article>
 					</div>
 				</div>
-
-
-				{/*<ul>*/}
-				{/*	<li>*/}
-				{/*		<img*/}
-				{/*			style={ { height: "25px", width: "25px" } }*/}
-				{/*			//todo make relative?*/}
-				{/*			src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }*/}
-				{/*			alt={ "Logo" }*/}
-				{/*		/>*/}
-				{/*		{ player.fullName }*/}
-				{/*	</li>*/}
-				{/*	<li> Team: { player.currentTeam?.name }</li>*/}
-				{/*	<li> Age: { player.currentAge }</li>*/}
-				{/*	<li> Jersey :{ player.primaryNumber }</li>*/}
-				{/*	<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>*/}
-				{/*	<li> Handed: { player.shootsCatches }</li>*/}
-				{/*	<li> Nationality: { player.nationality }</li>*/}
-				{/*	{ player.captain && <li>Captain</li> }*/}
-				{/*	{ player.rookie && <li>Rookie</li> }*/}
-				{/*</ul>*/}
+				{/*<ul>*/ }
+				{/*	<li>*/ }
+				{/*		<img*/ }
+				{/*			style={ { height: "25px", width: "25px" } }*/ }
+				{/*			//todo make relative?*/ }
+				{/*			src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }*/ }
+				{/*			alt={ "Logo" }*/ }
+				{/*		/>*/ }
+				{/*		{ player.fullName }*/ }
+				{/*	</li>*/ }
+				{/*	<li> Team: { player.currentTeam?.name }</li>*/ }
+				{/*	<li> Age: { player.currentAge }</li>*/ }
+				{/*	<li> Jersey :{ player.primaryNumber }</li>*/ }
+				{/*	<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>*/ }
+				{/*	<li> Handed: { player.shootsCatches }</li>*/ }
+				{/*	<li> Nationality: { player.nationality }</li>*/ }
+				{/*	{ player.captain && <li>Captain</li> }*/ }
+				{/*	{ player.rookie && <li>Rookie</li> }*/ }
+				{/*</ul>*/ }
 			</Fragment>
 		) : null
 	)
