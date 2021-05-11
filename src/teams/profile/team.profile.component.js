@@ -4,7 +4,7 @@ import React, {
 } from "react"
 import {
 	useDispatch,
-	useSelector
+	useSelector,
 } from "react-redux"
 import { useParams } from "react-router-dom"
 import { TeamStatsComponent } from "../stats/team.stats.component"
@@ -18,11 +18,9 @@ export const TeamProfileComponent = () => {
 
 	useEffect(
 		() => {
-			if (!team) {
-				dispatch(fetchTeamProfileAction(teamName))
-			}
+			dispatch(fetchTeamProfileAction(teamName))
 		},
-		[ team?.id ]
+		[]
 	)
 
 	return (

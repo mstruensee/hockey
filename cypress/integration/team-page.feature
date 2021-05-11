@@ -1,6 +1,6 @@
 Feature: team page
 
-  Scenario: use can view team stats
+  Scenario: user can view team stats
     Given user loads team page
     Then team stats should display
       | team name     | New Jersey Devils |
@@ -16,13 +16,13 @@ Feature: team page
       | goals against | 43                |
       | opportunities | 155               |
 
-  Scenario: use can search team roster
+  Scenario: user can search team roster
     Given user loads team page
     Then there should be 27 players
     When the user searches for "jac" player
     Then there should be 2 players
 
-  Scenario: use can view player profile
+  Scenario: user can view player profile
     Given user loads team page
     When the user searches for "subban" player
     When user clicks view player info
@@ -33,7 +33,7 @@ Feature: team page
       | position        | Defenseman        |
       | handed          | R                 |
       | nationality     | CAN               |
-    When use closes player stats
+    When user closes player stats
     When the user searches for "jacobs" player
     When user clicks view player info
     Then player stats should display

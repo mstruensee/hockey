@@ -1,11 +1,8 @@
 import {
 	TEAMS_FETCH,
-	TEAMS_REDUCER
+	TEAMS_REDUCER,
 } from "./teams.types"
 import { setListAction } from "@wecreatesoftware/redux-higher-order-reducers"
-import { push } from "connected-react-router"
-
-export const goToTeamsPageAction = push("/teams")
 
 export const fetchTeamsAction = () => ({
 	type: TEAMS_FETCH,

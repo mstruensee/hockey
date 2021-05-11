@@ -14,7 +14,7 @@ import "./player.profile.scss"
 
 export const PlayerProfileComponent = ({ id }) => {
 	const dispatch = useDispatch()
-	const { teamName } = useParams() //wish i could use player.fullName
+	const { teamName } = useParams()
 	const player = useSelector(playerSelector)
 	const teamAbbreviation = useSelector(state => teamAbbreviationByTeamNameSelector(state, { teamName }))
 
@@ -28,11 +28,11 @@ export const PlayerProfileComponent = ({ id }) => {
 	return (
 		player ? (
 			<Fragment>
-				<div className="player-profile">
-					<div className="profile-image">
+				<div className={ "player-profile" }>
+					<div className={ "profile-image" }>
 						<img
 							src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }
-							alt="profile-sample2"
+							alt={ "profile-picture" }
 						/>
 					</div>
 					<div>
@@ -49,66 +49,7 @@ export const PlayerProfileComponent = ({ id }) => {
 						</article>
 					</div>
 				</div>
-				{/*<ul>*/ }
-				{/*	<li>*/ }
-				{/*		<img*/ }
-				{/*			style={ { height: "25px", width: "25px" } }*/ }
-				{/*			//todo make relative?*/ }
-				{/*			src={ `https://assets.nhle.com/mugs/nhl/20192020/${ teamAbbreviation }/${ id }.png` }*/ }
-				{/*			alt={ "Logo" }*/ }
-				{/*		/>*/ }
-				{/*		{ player.fullName }*/ }
-				{/*	</li>*/ }
-				{/*	<li> Team: { player.currentTeam?.name }</li>*/ }
-				{/*	<li> Age: { player.currentAge }</li>*/ }
-				{/*	<li> Jersey :{ player.primaryNumber }</li>*/ }
-				{/*	<li> Position: { player.primaryPosition?.name } ({ player.primaryPosition?.abbreviation })</li>*/ }
-				{/*	<li> Handed: { player.shootsCatches }</li>*/ }
-				{/*	<li> Nationality: { player.nationality }</li>*/ }
-				{/*	{ player.captain && <li>Captain</li> }*/ }
-				{/*	{ player.rookie && <li>Rookie</li> }*/ }
-				{/*</ul>*/ }
 			</Fragment>
 		) : null
 	)
-// return
 }
-
-
-/*
-
-
-{
-  "id": 8477972,
-  "fullName": "Josh Jacobs",
-  "link": "/api/v1/people/8477972",
-  "firstName": "Josh",
-  "lastName": "Jacobs",
-  "primaryNumber": "40",
-  "birthDate": "1996-02-15",
-  "currentAge": 25,
-  "birthCity": "Shelby Township",
-  "birthStateProvince": "MI",
-  "birthCountry": "USA",
-  "nationality": "USA",
-  "height": "6' 2\"",
-  "weight": 200,
-  "active": true,
-  "alternateCaptain": false,
-  "captain": false,
-  "rookie": true,
-  "shootsCatches": "R",
-  "rosterStatus": "Y",
-  "currentTeam": {
-    "id": 1,
-    "name": "New Jersey Devils",
-    "link": "/api/v1/teams/1"
-  },
-  "primaryPosition": {
-    "code": "D",
-    "name": "Defenseman",
-    "type": "Defenseman",
-    "abbreviation": "D"
-  }
-}
- */

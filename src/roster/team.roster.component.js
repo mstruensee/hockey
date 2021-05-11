@@ -1,16 +1,11 @@
 import React, {
-	useEffect,
 	useState,
 	Fragment,
 } from "react"
-import {
-	useDispatch,
-	useSelector
-} from "react-redux"
+import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { ModalComponent } from "../player/modal/modal.component"
 import { rosterByTeamNameSelector } from "../teams/teams.selectors"
-import { fetchTeamRosterAction } from "./team.roster.actions"
 import "./team.roster.scss"
 
 const initialState = {
@@ -19,22 +14,13 @@ const initialState = {
 }
 
 export const TeamRosterComponent = () => {
-	const dispatch = useDispatch()
+	// const dispatch = useDispatch()
 	const { teamName } = useParams()
 
 	const [ { isOpen = false, player }, setState ] = useState(initialState)
 	const closeModal = () => setState(initialState)
 
 	const roster = useSelector(state => rosterByTeamNameSelector(state, { teamName }))
-
-	// useEffect(
-	// 	() => {
-	// 		if (!roster) {
-	// 			dispatch(fetchTeamRosterAction(teamName))
-	// 		}
-	// 	},
-	// 	[]
-	// )
 
 	return (
 		roster ? (

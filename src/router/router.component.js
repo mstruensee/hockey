@@ -30,6 +30,6 @@ export const RouterComponent = () => (
 			path={ "/players/:id" }
 			component={ PlayerProfilePage }
 		/>
-		<Route render={ () => (<div>Miss</div>) } />
+		<Route render={ () => (<div>Oops, something went wrong! :(</div>) } />
 	</Switch>
 )

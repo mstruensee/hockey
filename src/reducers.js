@@ -6,15 +6,15 @@ import {
 import { combineReducers } from "redux"
 import {
 	PLAYER_INITIAL_STATE,
-	PLAYER_REDUCER
+	PLAYER_REDUCER,
 } from "./player/profile/player.types"
 import {
 	PLAYER_SEARCH_TERM_INITIAL_STATE,
-	PLAYER_SEARCH_TERM_REDUCER
+	PLAYER_SEARCH_TERM_REDUCER,
 } from "./player/search/player.search.types"
 import {
 	TEAMS_SEARCH_TERM_INITIAL_STATE,
-	TEAMS_SEARCH_TERM_REDUCER
+	TEAMS_SEARCH_TERM_REDUCER,
 } from "./teams/search/teams.search.types"
 import {
 	TEAMS_INITIAL_STATE,

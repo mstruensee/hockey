@@ -5,9 +5,7 @@ import {
 } from "react-redux"
 import { fetchTeamsAction } from "./teams.actions"
 import { TeamsCardComponent } from "./teams.card.component"
-import {
-	teamsBySearchTermSelector,
-} from "./teams.selectors"
+import { teamsBySearchTermSelector } from "./teams.selectors"
 import "./teams.list.scss"
 
 export const TeamsListComponent = () => {
