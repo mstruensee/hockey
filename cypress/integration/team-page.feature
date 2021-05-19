@@ -29,7 +29,7 @@ Feature: team page
     Then player stats should display
       | jersey and name | #76 P.K. Subban   |
       | team name       | New Jersey Devils |
-      | age             | 31                |
+      | age             | 32                |
       | position        | Defenseman        |
       | handed          | R                 |
       | nationality     | CAN               |
